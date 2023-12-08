@@ -2,7 +2,6 @@ import { Meteor } from "meteor/meteor";
 import { render } from "react-dom";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-//import UserStatus from "../app/components/UserStatus";
 import HomePage from "../app/components/Homepage";
 import Forecast from "../app/components/Forecast";
 import React from "react";

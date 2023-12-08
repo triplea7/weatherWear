@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-import WeatherForecast from "./Charts"; // Import the WeatherForecast component
+import WeatherForecast from "./Charts";
 import { Meteor } from "meteor/meteor";
 
 const Forecast = () => {
-  const [forecastData, setForecastData] = useState<any>(null); // Replace 'any' with the actual type of your forecast data
+  const [forecastData, setForecastData] = useState<any>(null);
 
   useEffect(() => {
-    // Make an API call to fetch weather data when the component mounts
     Meteor.call("weather.fetch", (error, result) => {
       if (error) {
         console.error("Error fetching weather forecast:", error);

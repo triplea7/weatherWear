@@ -5,16 +5,14 @@ import Chart from "chart.js/auto";
 Chart.register(CategoryScale);
 
 interface WeatherForecastProps {
-  forecastData: any; // Replace 'any' with the actual type of your forecast data
+  forecastData: any;
 }
 
 const WeatherForecast: React.FC<WeatherForecastProps> = ({ forecastData }) => {
-  // Extract data for different charts from forecastData
   if (!forecastData || !forecastData.properties.periods) {
     return <p>No forecast data available.</p>;
   }
 
-  // Example: Short Forecast Data
   const labels = forecastData.properties.periods.map(
     (period: any) => period.name
   );
@@ -36,9 +34,6 @@ const WeatherForecast: React.FC<WeatherForecastProps> = ({ forecastData }) => {
     (period: any) => period.relativeHumidity.value
   );
 
-  // You can similarly extract data for other charts like wind direction, humidity, etc.
-
-  // Chart Configuration for Short Forecast
   const humidityChart = {
     labels: labels,
     datasets: [
@@ -69,7 +64,6 @@ const WeatherForecast: React.FC<WeatherForecastProps> = ({ forecastData }) => {
     },
   };
 
-  // Chart Configuration for Temperature
   const temperatureChart = {
     labels: labels,
     datasets: [
@@ -84,7 +78,7 @@ const WeatherForecast: React.FC<WeatherForecastProps> = ({ forecastData }) => {
     options: {
       scales: {
         x: {
-          type: "linear", // Assuming temperature is plotted against a numerical scale
+          type: "linear",
           title: {
             display: true,
             text: "X-axis Label",
@@ -101,7 +95,6 @@ const WeatherForecast: React.FC<WeatherForecastProps> = ({ forecastData }) => {
     },
   };
 
-  // Chart Configuration for Temperature
   const precipChart = {
     labels: labels,
     datasets: [
@@ -116,7 +109,7 @@ const WeatherForecast: React.FC<WeatherForecastProps> = ({ forecastData }) => {
     options: {
       scales: {
         x: {
-          type: "linear", // Assuming temperature is plotted against a numerical scale
+          type: "linear",
           title: {
             display: true,
             text: "X-axis Label",
@@ -133,7 +126,6 @@ const WeatherForecast: React.FC<WeatherForecastProps> = ({ forecastData }) => {
     },
   };
 
-  // Render the component with multiple charts
   return (
     <div
       style={{
@@ -169,7 +161,6 @@ const WeatherForecast: React.FC<WeatherForecastProps> = ({ forecastData }) => {
           <Bar data={precipChart} />
         </div>
       </div>
-      {/* Add more charts for wind direction, humidity, etc. */}
     </div>
   );
 };

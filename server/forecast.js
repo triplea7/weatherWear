@@ -10,18 +10,14 @@ Meteor.methods({
     const metadataUrl = `https://api.weather.gov/points/${philadelphiaCoordinates}`;
 
     try {
-      // Step 1: Retrieve metadata for Philadelphia
       const metadataResponse = await fetch(metadataUrl);
       const metadata = await metadataResponse.json();
 
-      // Step 2: Extract the forecast URL from the metadata
       const forecastUrl = metadata.properties.forecast;
 
-      // Step 3: Retrieve the forecast for Philadelphia
       const forecastResponse = await fetch(forecastUrl);
       const forecast = await forecastResponse.json();
 
-      // Step 4: Parse through the properties to extract relevant information
       const forecastPeriods = forecast.properties?.periods || [];
       forecastPeriods.forEach((period, index) => {
         console.log(`Period ${index + 1}:`);
