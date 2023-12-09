@@ -1,3 +1,6 @@
 import { Meteor } from "meteor/meteor";
-import "./account";
 import "./forecast";
+
+Meteor.startup(() => {
+  console.log("Server up and running!");
+});
